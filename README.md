@@ -115,21 +115,28 @@ const Licerepo = require('./bin/Licerepo');
 })();
 ```
 
-## Licensing
+## License Notice
 
-This project is dual-licensed:
+This repository is **dual-licensed**:
 
-### Open Source
+1. **Educational / Non-Commercial License (`LICENSE-EDU.md`)**
+   - Free to use for personal, academic, or research purposes only.
+   - Commercial use (SaaS, proprietary products, internal enterprise use, or revenue-generating projects) is **strictly prohibited**.
+   - AI / ML usage (training, datasets, benchmarking, automated code generation) is **prohibited** without explicit written permission.
+   - License terms may **change upon official production release**; updates will be published in this repository.
 
-- **GNU General Public License v3.0 or later**
-- See `LICENSE-GNU.md`
+2. **Commercial License (`LICENSE-COMMERCIAL.md`)**
+   - Required for any commercial, proprietary, or SaaS use.
+   - AI / ML usage restrictions apply as above.
+   - License rights are activated only after a valid commercial agreement and payment of fees.
 
-### Commercial Use
+---
 
-- Requires a **paid commercial license**
-- See `LICENSE-COMMERCIAL.md`
+## Important Notes
 
-Commercial use without a valid license is not permitted.
+- **EU Compliance**: Both licenses include a fallback clause for EU law.
+- **Audit Rights**: Licensor may verify compliance with license terms.
+- **Termination**: Unauthorized commercial use, violation of AI restrictions, or breach of license terms will result in automatic termination of rights.
 
-Artificial intelligence training or dataset usage is prohibited under
-all license options without explicit written permission.
+By using this repository, you agree to comply with the applicable license terms.
+For more details, see `LICENSE-EDU.md` and `LICENSE-COMMERCIAL.md`.
