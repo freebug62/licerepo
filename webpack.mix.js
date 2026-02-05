@@ -4,6 +4,8 @@ mix
     .js([
         'bin/LicerepoNpm.js',
         'bin/LicerepoComposer.js',
+        'bin/LicerepoYaml.js',
+        'bin/LicerepoReport.js',
         'bin/Licerepo.js',
     ], 'dist/Licerepo.js')
     .babelConfig({

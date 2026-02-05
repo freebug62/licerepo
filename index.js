@@ -10,11 +10,15 @@ const Licerepo = require('./bin/Licerepo');
 
     // Composer
     console.log('----------------------- Composer');
-    console.log("Laravel:", await lice.fetchComposer('laravel/framework', 'latest'));
-    console.log("Guzzle:", await lice.fetchComposer('guzzlehttp/guzzle'));
+    //console.log("Laravel:", await lice.fetchComposer('laravel/framework', 'latest'));
+    //console.log("Guzzle:", await lice.fetchComposer('guzzlehttp/guzzle'));
 
     // Pub.dev
     console.log('----------------------- Pub.dev');
     //console.log("Provider:", await lice.fetchYaml('provider'));
     //console.log("http:", await lice.fetchYaml('http'));
+
+    console.log('----------------------- Report');
+    console.log(await lice.report('composer', 'laravel/framework', 'latest'));
+    //console.log(await lice.report('composer', 'drupal/core', 'latest'));
 })();

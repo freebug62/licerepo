@@ -115,6 +115,52 @@ const Licerepo = require('./bin/Licerepo');
 })();
 ```
 
+### Output
+
+```json
+{
+  "package": {
+    "name": "drupal/core",
+    "version": "11.3.3",
+    "description": "Drupal is an open source content management platform powering millions of websites and applications.",
+    "repository": "https://github.com/drupal/core.git",
+    "homepage": null,
+    "lastPublished": "2026-02-05T08:05:30+00:00",
+    "maintainers": []
+  },
+  "mainLicense": {
+    "declared": "GPL-2.0-or-later",
+    "status": "restrictive",
+    "copyleftRisk": "High",
+    "commercialUseSafe": true,
+    "flagged": true,
+    "reason": "Strong copyleft (GPL) – requires derivative works to be open source under GPL"
+  },
+  "dependencies": {
+    "total": 74,
+    "note": "Dependency license information is not available in current metadata. To analyze license risk, please check the individual dependencies."
+  },
+  "risk": {
+    "level": "Low",
+    "hasVulnerabilities": false,
+    "vulnerabilitiesCount": 0,
+    "isDeprecated": false,
+    "messages": [
+      "No major license, vulnerability or maintenance red flags detected"
+    ]
+  },
+  "recommendations": [
+    "No major license, vulnerability or maintenance red flags detected"
+  ],
+  "recommendation": {
+    "category": "medium",
+    "level": "low-moderate",
+    "score": 3.5,
+    "recommendation": "Moderate dependency count (74). Still maintainable for most teams, but consider auditing the most critical ones (security, maintenance status, license compatibility)."
+  }
+}
+```
+
 ## License Notice
 
 This repository is **dual-licensed**:
