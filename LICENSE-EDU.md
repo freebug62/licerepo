@@ -1,8 +1,6 @@
-# GNU GENERAL PUBLIC LICENSE
+# EDUCATIONAL / NON-COMMERCIAL LICENSE
 
-Version 3.0 or later
-
-SPDX-License-Identifier: GPL-3.0-or-later
+SPDX-License-Identifier: LicenseRef-Edu-Taniguchi-2026
 
 Copyright (C) 2026
 J. Toshio Taniguchi
@@ -10,59 +8,70 @@ J. Toshio Taniguchi
 
 ---
 
-## License Grant
+## 1. License Grant
 
-This software is free software. You may use, modify, and redistribute it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.
+The Licensor grants the Licensee a **non-exclusive, non-transferable, non-sublicensable license** to use this software **solely for personal, educational, academic, or research purposes**.
 
----
-
-## Additional Terms (Applicable Under GPL)
-
-### 1. Liability Limitation and EU Fallback Clause
-
-This software is provided **"as is"**, without warranty of any kind,
-whether express or implied, including but not limited to the implied
-warranties of merchantability and fitness for a particular purpose.
-
-If, under applicable law (including but not limited to the laws of any
-member state of the European Union), any disclaimer or limitation of
-liability contained herein is held to be invalid, unenforceable, or
-restricted, **the license grant for this software shall be deemed null
-and void in such jurisdiction**.
-
-In such cases, **any use, modification, or distribution of this software
-is strictly prohibited**.
+- You may copy, study, and modify the software for these purposes.
+- You may distribute modified or unmodified versions **only for non-commercial use**, provided this license remains attached.
+- Any commercial use (including SaaS, hosted services, internal enterprise use for revenue-generating projects, or inclusion in proprietary software) is strictly prohibited under this license.
 
 ---
 
-### 2. Artificial Intelligence Training Prohibition
+## 2. Artificial Intelligence / Machine Learning Restriction
 
-Notwithstanding any rights granted under this license, this software,
-in whole or in part, **may NOT be used** for:
+This software **may NOT** be used, in whole or in part, for:
 
-- training or fine-tuning artificial intelligence systems
-- machine learning model development
-- dataset generation for AI systems
-- benchmarking or evaluation of AI systems
-- automated code generation systems
+- Training, fine-tuning, or improving AI or ML models
+- Generating datasets for AI systems
+- Benchmarking or evaluating AI systems
+- Automated code generation systems
 
-This restriction applies to **all forms of use**, whether commercial or
-non-commercial.
-
-Any such use requires **prior explicit written permission** from the
-copyright holder.
+This restriction applies **to all uses**, commercial or non-commercial.
+Explicit **written permission from the copyright holder** is required for any such use.
 
 ---
 
-## Disclaimer of Warranty
+## 3. Liability Limitation and EU Fallback Clause
 
-This program is distributed in the hope that it will be useful,
-but **WITHOUT ANY WARRANTY**.
+This software is provided **"as is"**, without warranty of any kind, either express or implied, including merchantability, fitness for a particular purpose, or non-infringement.
 
-See the full GNU General Public License for more details.
+If, under applicable law (including any EU member state), any disclaimer or limitation of liability is deemed invalid or unenforceable, **this license automatically terminates in that jurisdiction**.
+Any further use, modification, or distribution in that jurisdiction is **strictly prohibited**.
 
-A copy of the GNU GPL should have been provided with this software.
-If not, see: <https://www.gnu.org/licenses/>
+---
+
+## 4. License Change Upon Production Release
+
+The Licensor reserves the right to **change the license type** upon official production release.
+
+- The license may be converted to a **commercial or dual-license model**.
+- Updates regarding the new license terms will be **published in the repository**.
+- Continued use of the software after production release constitutes acceptance of the updated license.
+
+---
+
+## 5. Audit and Compliance
+
+The Licensor reserves the right to request reasonable documentation to verify compliance with the educational/non-commercial terms.
+
+- Material non-compliance may result in **revocation of this license**.
+- The Licensee must immediately cease all use if found non-compliant.
+
+---
+
+## 6. Termination
+
+This license terminates automatically upon:
+
+- Any commercial use without a valid commercial license
+- Violation of the AI/ML usage restrictions
+- Breach of any material term in this license
+
+Upon termination, **all use of the software must cease immediately**.
+
+---
+
+## 7. Reservation of Rights
+
+All rights not expressly granted herein are reserved by the Licensor.
