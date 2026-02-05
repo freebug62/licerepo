@@ -22,9 +22,65 @@ The library exposes a clean programmatic interface, making it suitable for integ
 
 Whether you are managing an enterprise application with hundreds of dependencies or a small open-source project, Licerepo provides the visibility and control necessary to maintain secure, up-to-date, and legally compliant software ecosystems. Its multi-repository support and extensive metadata coverage make it a critical tool for modern software development and operations.
 
+Licerepo itself uses **no runtime dependencies** meaning, the code is self-contained. 3rd-party dependencies are exclusively used to bundle and package the library.
+
 [todo: description|author: website|version: 1.0.4]
 
+## 3rd-Party Service Dependencies
+
+Package metadata is retrieved from the following sources:
+
+- **npm**: `https://registry.npmjs.org/`
+- **YAML / Pub.dev**: `https://pub.dev/api/packages/`
+- **Composer / Packagist**: `https://packagist.org/`
+
+> **Composer package vulnerabilities status**
+>
+> - Package information is first fetched from **Packagist**.
+> - Vulnerability data is then retrieved via the **OSV API**: `https://osv.dev/`.
+> - The workflow: `Packagist → OSV` ensures both package metadata and known security issues are captured.
+
+## Development Proxy (CORS)
+
+When running Licerepo in a development environment (NODE_ENV=development), a CORS proxy is used to fetch package data from external APIs to bypass browser cross-origin restrictions. **No proxy is used in production**.
+
+### How it works
+
+Normal API request:
+
+```https://packagist.org/p2/laravel/framework.json```
+
+In development, the URL is rewritten through the proxy:
+
+```javascript
+if (process.env.NODE_ENV === 'development') {
+    url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+}
+```
+
+Proxy URL:
+
+`https://corsproxy.io/?https%3A%2F%2Fpackagist.org%2Fp2%2Flaravel%2Fframework.json`
+
+The proxy returns the JSON response, bypassing CORS restrictions in the browser.
+
+> **Notes**
+>
+> The proxy is only used in development; production builds fetch data directly from the APIs.
+>
+> Alternative proxies can be changed on `./bin` files.
+>
+> No API keys are required; the proxy is for local testing only.
+
 ## Compiling
+
+Licerepo is compiled using Node.js and webpack-mix and, has zero 3rd party library dependencies.
+
+Run following command to install development dependencies:
+
+```bash
+npm install
+```
 
 ### For development
 
@@ -37,27 +93,26 @@ To compile this project for production, run `npm run build` or `npm run prod`.
 ## Usage
 
 ```js
-// NPM example
-const lice = new LicerepoNpm();
-console.log("Axios:", await lice.fetchNpm('axios', 'latest'));
+const Licerepo = require('./bin/Licerepo');
 
-// Result payload (object)
-{
-    dependencies: {total: 62, list: Array(62)}
-    deprecated: false
-    deprecationMessage: null
-    description: "Promise based HTTP client for the browser and node.js"
-    error: null
-    hasVulnerabilities: false
-    homepage: "https://axios-http.com"
-    lastPublished: "2026-01-27T18:18:38.613Z"
-    license: "MIT"
-    maintainers: ['mzabriskie', 'nickuraltsev', 'emilyemorehouse', 'jasonsaayman']
-    name: "axios"
-    repository: "git+https://github.com/axios/axios.git"
-    version: "1.13.4"
-    vulnerabilitiesCount: 0
-}
+(async () => {
+    const lice = new Licerepo();
+
+    // NPM
+    console.log('----------------------- NPM');
+    //console.log("React:", await lice.fetchNpm('react', 'latest'));
+    //console.log("Axios:", await lice.fetchNpm('axios', '1.13.4'));
+
+    // Composer
+    console.log('----------------------- Composer');
+    //console.log("Laravel:", await lice.fetchComposer('laravel/framework', 'latest'));
+    //console.log("Guzzle:", await lice.fetchComposer('guzzlehttp/guzzle'));
+
+    // Pub.dev
+    console.log('----------------------- Pub.dev');
+    //console.log("Provider:", await lice.fetchYaml('provider'));
+    //console.log("http:", await lice.fetchYaml('http'));
+})();
 ```
 
 ## Licensing
@@ -67,7 +122,7 @@ This project is dual-licensed:
 ### Open Source
 
 - **GNU General Public License v3.0 or later**
-- See `LICENSE-GPL.md`
+- See `LICENSE-GNU.md`
 
 ### Commercial Use
 

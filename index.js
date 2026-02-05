@@ -4,14 +4,17 @@ const Licerepo = require('./bin/Licerepo');
     const lice = new Licerepo();
 
     // NPM
-    console.log("React:", await lice.fetchNpm('react', 'latest'));
-    console.log("Axios:", await lice.fetchNpm('axios', '1.13.4'));
+    console.log('----------------------- NPM');
+    //console.log("React:", await lice.fetchNpm('react', 'latest'));
+    //console.log("Axios:", await lice.fetchNpm('axios', '1.13.4'));
 
     // Composer
-    //console.log("Laravel:", await lice.fetch('laravel/framework'));
-    //console.log("Guzzle:", await lice.fetch('guzzlehttp/guzzle'));
+    console.log('----------------------- Composer');
+    console.log("Laravel:", await lice.fetchComposer('laravel/framework', 'latest'));
+    console.log("Guzzle:", await lice.fetchComposer('guzzlehttp/guzzle'));
 
     // Pub.dev
-    console.log("Provider:", await lice.fetchYaml('provider'));
-    console.log("http:", await lice.fetchYaml('http'));
+    console.log('----------------------- Pub.dev');
+    //console.log("Provider:", await lice.fetchYaml('provider'));
+    //console.log("http:", await lice.fetchYaml('http'));
 })();

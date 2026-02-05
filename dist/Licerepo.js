@@ -75,11 +75,14 @@ var Licerepo = function () {
     key: "fetchComposer",
     value: function () {
       var _fetchComposer = _asyncToGenerator(_regenerator().m(function _callee3(packageName) {
+        var version,
+          _args3 = arguments;
         return _regenerator().w(function (_context3) {
           while (1) switch (_context3.n) {
             case 0:
+              version = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'latest';
               _context3.n = 1;
-              return new LicerepoComposer().fetch(packageName);
+              return new LicerepoComposer().fetch(packageName, version);
             case 1:
               return _context3.a(2, _context3.v);
           }
@@ -102,15 +105,291 @@ module.exports = Licerepo;
   \*********************************/
 (module) {
 
+function _regenerator() { var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-var LicerepoComposer = _createClass(function LicerepoComposer() {
-  _classCallCheck(this, LicerepoComposer);
-});
+var LicerepoComposer = function () {
+  function LicerepoComposer() {
+    _classCallCheck(this, LicerepoComposer);
+    _defineProperty(this, "BASE_URL", 'https://repo.packagist.org/p2/');
+    _defineProperty(this, "OSV_URL", 'https://api.osv.dev/v1/query');
+  }
+  return _createClass(LicerepoComposer, [{
+    key: "fetch",
+    value: function (_fetch) {
+      function fetch(_x) {
+        return _fetch.apply(this, arguments);
+      }
+      fetch.toString = function () {
+        return _fetch.toString();
+      };
+      return fetch;
+    }(function () {
+      var _ref = _asyncToGenerator(_regenerator().m(function _callee(packageName) {
+        var _this = this;
+        var version,
+          nameValidation,
+          versionValidation,
+          _pkg$source,
+          _pkg$support,
+          _pkg$maintainers,
+          url,
+          res,
+          data,
+          pkgKey,
+          versions,
+          targetVersionObj,
+          cleanVersion,
+          pkg,
+          dependencies,
+          depTypes,
+          typeMap,
+          _i,
+          _depTypes,
+          key,
+          _i2,
+          _Object$entries,
+          _Object$entries$_i,
+          name,
+          constraint,
+          vulnerabilities,
+          vulnRes,
+          vulnData,
+          _args = arguments,
+          _t,
+          _t2;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              version = _args.length > 1 && _args[1] !== undefined ? _args[1] : 'latest';
+              this.packageName = packageName;
+              this.version = version;
+              nameValidation = this._validatePackageName(packageName);
+              if (nameValidation.valid) {
+                _context.n = 1;
+                break;
+              }
+              throw new Error("Invalid package name: ".concat(packageName, " \u2014 ").concat(nameValidation.reason));
+            case 1:
+              versionValidation = this._validateVersion(version);
+              if (versionValidation.valid) {
+                _context.n = 2;
+                break;
+              }
+              throw new Error("Invalid version: ".concat(version, " \u2014 ").concat(versionValidation.reason));
+            case 2:
+              _context.p = 2;
+              url = "".concat(this.BASE_URL).concat(encodeURIComponent(packageName.toLowerCase()), ".json");
+              if (true) {
+                url = "https://corsproxy.io/?".concat(encodeURIComponent(url));
+              }
+              _context.n = 3;
+              return fetch(url, {
+                headers: {
+                  'Accept': 'application/json'
+                }
+              });
+            case 3:
+              res = _context.v;
+              if (res.ok) {
+                _context.n = 5;
+                break;
+              }
+              if (!(res.status === 404)) {
+                _context.n = 4;
+                break;
+              }
+              return _context.a(2, {
+                error: "Package '".concat(packageName, "' not found.")
+              });
+            case 4:
+              throw new Error("HTTP ".concat(res.status, " [").concat(res.statusText, "]"));
+            case 5:
+              _context.n = 6;
+              return res.json();
+            case 6:
+              data = _context.v;
+              pkgKey = Object.keys(data.packages)[0];
+              if (!(!pkgKey || !data.packages[pkgKey] || data.packages[pkgKey].length === 0)) {
+                _context.n = 7;
+                break;
+              }
+              return _context.a(2, {
+                error: "No versions found for package '".concat(packageName, "'")
+              });
+            case 7:
+              versions = data.packages[pkgKey];
+              if (!(version === 'latest')) {
+                _context.n = 8;
+                break;
+              }
+              targetVersionObj = versions.reduce(function (latest, current) {
+                return _this._compareVersions(current.version, latest.version) > 0 ? current : latest;
+              }, versions[0]);
+              _context.n = 9;
+              break;
+            case 8:
+              cleanVersion = version.replace(/^v/, '');
+              targetVersionObj = versions.find(function (v) {
+                return v.version.replace(/^v/, '') === cleanVersion;
+              });
+              if (targetVersionObj) {
+                _context.n = 9;
+                break;
+              }
+              return _context.a(2, {
+                error: "Version '".concat(version, "' not found for package '").concat(packageName, "'")
+              });
+            case 9:
+              pkg = targetVersionObj;
+              dependencies = [];
+              depTypes = ['require', 'require-dev', 'suggest', 'replace', 'provide'];
+              typeMap = {
+                'require': 'dependency',
+                'require-dev': 'dev_dependency',
+                'suggest': 'suggested',
+                'replace': 'replaced',
+                'provide': 'provided'
+              };
+              for (_i = 0, _depTypes = depTypes; _i < _depTypes.length; _i++) {
+                key = _depTypes[_i];
+                if (pkg[key] && _typeof(pkg[key]) === 'object') {
+                  for (_i2 = 0, _Object$entries = Object.entries(pkg[key]); _i2 < _Object$entries.length; _i2++) {
+                    _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2), name = _Object$entries$_i[0], constraint = _Object$entries$_i[1];
+                    dependencies.push({
+                      name: name,
+                      version: constraint || '*',
+                      type: typeMap[key]
+                    });
+                  }
+                }
+              }
+              vulnerabilities = [];
+              _context.p = 10;
+              _context.n = 11;
+              return fetch(this.OSV_URL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  "package": {
+                    name: packageName,
+                    ecosystem: 'Packagist'
+                  },
+                  version: pkg.version.replace(/^v/, '')
+                })
+              });
+            case 11:
+              vulnRes = _context.v;
+              _context.n = 12;
+              return vulnRes.json();
+            case 12:
+              vulnData = _context.v;
+              vulnerabilities = vulnData.vulnerabilities || [];
+              _context.n = 14;
+              break;
+            case 13:
+              _context.p = 13;
+              _t = _context.v;
+            case 14:
+              return _context.a(2, {
+                name: pkgKey,
+                version: pkg.version,
+                description: pkg.description || null,
+                license: Array.isArray(pkg.license) ? pkg.license.join(', ') : pkg.license || null,
+                homepage: pkg.homepage || null,
+                repository: ((_pkg$source = pkg.source) === null || _pkg$source === void 0 ? void 0 : _pkg$source.url) || ((_pkg$support = pkg.support) === null || _pkg$support === void 0 ? void 0 : _pkg$support.source) || null,
+                deprecated: !!pkg.abandoned,
+                deprecationMessage: pkg.abandoned === true ? 'Package is abandoned' : typeof pkg.abandoned === 'string' ? pkg.abandoned : null,
+                lastPublished: pkg.time || null,
+                maintainers: ((_pkg$maintainers = pkg.maintainers) === null || _pkg$maintainers === void 0 ? void 0 : _pkg$maintainers.map(function (m) {
+                  return m.name;
+                })) || [],
+                vulnerabilitiesCount: vulnerabilities.length,
+                hasVulnerabilities: vulnerabilities.length > 0,
+                dependencies: {
+                  total: dependencies.length,
+                  list: dependencies
+                },
+                likes: null,
+                popularity: null,
+                pubPoints: null,
+                error: null
+              });
+            case 15:
+              _context.p = 15;
+              _t2 = _context.v;
+              return _context.a(2, {
+                name: packageName,
+                version: version,
+                error: _t2.message
+              });
+          }
+        }, _callee, this, [[10, 13], [2, 15]]);
+      }));
+      return function (_x2) {
+        return _ref.apply(this, arguments);
+      };
+    }())
+  }, {
+    key: "_validatePackageName",
+    value: function _validatePackageName(name) {
+      if (typeof name !== 'string' || !name.trim()) return {
+        valid: false,
+        reason: 'Name must be a non-empty string'
+      };
+      var regex = /^[a-z0-9]([a-z0-9_.-]*[a-z0-9])?\/[a-z0-9]([a-z0-9_.-]*[a-z0-9])?$/i;
+      if (!regex.test(name)) return {
+        valid: false,
+        reason: 'Must be vendor/package format'
+      };
+      return {
+        valid: true
+      };
+    }
+  }, {
+    key: "_validateVersion",
+    value: function _validateVersion(version) {
+      if (typeof version !== 'string' || !version.trim()) return {
+        valid: false,
+        reason: 'Version must be a non-empty string'
+      };
+      return {
+        valid: true
+      };
+    }
+  }, {
+    key: "_compareVersions",
+    value: function _compareVersions(a, b) {
+      a = a.replace(/^v/, '').split('-')[0];
+      b = b.replace(/^v/, '').split('-')[0];
+      var partsA = a.split('.').map(Number);
+      var partsB = b.split('.').map(Number);
+      for (var i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+        var numA = partsA[i] || 0;
+        var numB = partsB[i] || 0;
+        if (numA > numB) return 1;
+        if (numA < numB) return -1;
+      }
+      return 0;
+    }
+  }]);
+}();
 module.exports = LicerepoComposer;
 
 /***/ },

@@ -14,8 +14,8 @@ class Licerepo {
         return await new LicerepoYaml().fetch(packageName, version);
     }
 
-    async fetchComposer(packageName) {
-        return await new LicerepoComposer().fetch(packageName);
+    async fetchComposer(packageName, version = 'latest') {
+        return await new LicerepoComposer().fetch(packageName, version);
     }
 }
 
